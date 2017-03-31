@@ -1,0 +1,43 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+	<div th:if="${message}">
+		<h2 th:text="${message}" />
+	</div>
+
+	<div>
+		<form method="POST" enctype="multipart/form-data" action="/">
+			<table>
+				<tr>
+					<td>File to upload:</td>
+					<td><input type="file" name="file" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" value="Upload" /></td>
+				</tr>
+				<tr>
+					<td>Please do no try uploading more than 1 MB file</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+	<div>
+		<h3>Link to download uploaded files</h3>
+		<ul>
+			<li th:each="file : ${files}"><a th:href="${file}"
+				th:text="${file}" /></li>
+		</ul>
+	</div>
+	
+	<div>
+		<h3>Link to download file metadata of uploaded files</h3>
+		<ul>
+			<li th:each="file : ${jsonAttribs}"><a th:href="${file}"
+				th:text="${file}" /></li>
+		</ul>
+	</div>
+
+</body>
+</html>
